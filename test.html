@@ -19,7 +19,6 @@
         const _input = document.querySelector("#input");
         const _form = document.querySelector("#form");
         const _logs = document.querySelector("#logs");
-        let out = 0;
 
         const numbers = [];  // [1, 2, 3, 4, 5, 6, 7, 8, 9]
         for (let n = 0; n < 9; n++) {
@@ -41,23 +40,7 @@
         console.log(answer);
 
         const tries = [];
-        function checkInput(input) {
-            if (input.length !== 4) {
-                return alert('You must select 4 digit number!');  // return type undefined
-            }
-            if (new Set(input).size !== 4) {
-                return alert('You must select different number for each');
-            }
-            if (tries.includes(input)) {
-                return alert('You have tried same number');
-            }
-            return true;
-        };
-
-        function defeated() {
-            const message = document.createTextNode('Loss! The asnwer was ' + answer.join(''));
-            _logs.appendChild(message);
-        }
+      
 
 
         _form.addEventListener('submit', (event) => {
@@ -65,15 +48,23 @@
             const val = _input.value;
             _input.value = '';
 
-            if (!checkInput(val)) {    // 'return alert' returns undefined which is false
-                return;
+            if (val.length !== 4) {
+                return alert('You must select 4 digit number!');  // return type undefined
             }
+            if (new Set(val).size !== 4) {
+                return alert('You must select different number for each');
+            }
+            if (tries.includes(val)) {
+                return alert('You have tried same number');
+            }
+
             if (answer.join('') === val) {
                 _logs.textContent = 'Homerun!!';
                 return;
             }
             if (tries.length >= 9) {
-                defeated();
+                const message = document.createTextNode('Loss! The asnwer was ' + answer.join(''));
+                _logs.appendChild(message);
                 return;
             }
             let strike = 0;
@@ -88,18 +79,9 @@
                     }
                 }
             }
-
-            if (strike == 0 && ball == 0) {
-                _logs.append(`${val}: OUT!!`, document.createElement('br'));
-                out += 1;
-                if (out >= 3) {
-                    defeated();
-                    return;
-                }
-            } else {
-                _logs.append(`${val}: ${strike} Strike ${ball} Ball`, document.createElement('br'));
-            }
+            _logs.append(`${val}: ${strike} Strike ${ball} Ball`, document.createElement('br'));
             tries.push(val);
+
         });
 
     </script>
@@ -107,5 +89,4 @@
 
 
 </body>
-
 </html>
