@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-baseball</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="input" style="margin-right: 5px;">
+        <button>CHECK</button>
+    </form>
+
+    <div id="logs"></div>
+
+    <script>
+        const _input = document.querySelector("#input");
+        const _form = document.querySelector("#form");
+        const _logs = document.querySelector("#logs");
+
+        const numbers = [];  // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (let n = 0; n < 9; n++) {
+            numbers.push(n + 1);
+        }
+
+        // Math.random()                        0 <= 0 < 1
+        // Math.random() * 9                    0 <= x < 9
+        // Math.random() * 9 + 1                1 <= x < 10
+        // Math.floor(Math.random() * 9 + 1)    x = {1,2,3,4,5,6,7,8,9}
+
+        const answer = [];
+        for (let n = 0; n < 4; n++) {
+            const index = Math.floor(Math.random() * numbers.length);
+            answer.push(numbers[index]);
+            numbers.splice(index, 1); // delete num to prevent double selection
+        }
+
+        console.log(answer);
+
+        const tries = [];
+        function checkInput(input) {
+            if (input.length !== 4) {
+                return alert('You must select 4 digit number!');
+            }
+            if (new Set(input).size !== 4) {
+                return alert('You must select different number for each');
+            }
+            if (tries.includes(input)) {
+                return alert('You have tried same number');
+            }
+            return true;
+        };
+
+
+        _form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const val = _input.value;
+            _input.value = '';
+
+            if (!checkInput(val)) {
+                return;
+            }
+            if (answer.join('') === val) {
+                _logs.textContent = 'Homerun!!';
+                return;
+            }
+            if (tries.length >= 9) {
+                const message = document.createTextNode('Loss! The asnwer was ' + answer.join(''));
+                _logs.appendChild(message);  
+                return;
+            }
+            tries.push(val);
+
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
