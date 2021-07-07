@@ -42,7 +42,7 @@
         const tries = [];
         function checkInput(input) {
             if (input.length !== 4) {
-                return alert('You must select 4 digit number!');
+                return alert('You must select 4 digit number!');  // return type undefined
             }
             if (new Set(input).size !== 4) {
                 return alert('You must select different number for each');
@@ -59,7 +59,7 @@
             const val = _input.value;
             _input.value = '';
 
-            if (!checkInput(val)) {
+            if (!checkInput(val)) {    // 'return alert' returns undefined which is false
                 return;
             }
             if (answer.join('') === val) {
@@ -68,9 +68,22 @@
             }
             if (tries.length >= 9) {
                 const message = document.createTextNode('Loss! The asnwer was ' + answer.join(''));
-                _logs.appendChild(message);  
+                _logs.appendChild(message);
                 return;
             }
+            let strike = 0;
+            let ball = 0;
+            for (let i = 0; i < answer.length; i++) {
+                const index = val.indexOf(answer[i]);
+                if (index > -1) { // number found
+                    if (index === i) { // same digit index
+                        strike += 1;
+                    } else { // number found but not same index
+                        ball += 1;
+                    }
+                }
+            }
+            _logs.append(`${val}: ${strike} Strike ${ball} Ball`, document.createElement('br'));
             tries.push(val);
 
         });
@@ -80,5 +93,4 @@
 
 
 </body>
-
 </html>
