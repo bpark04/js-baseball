@@ -10,7 +10,7 @@ This is simple 'Bulls and Cows' game modified to baseball terms. (Because I'm a 
       - **Ball**: Player's input number is in opponent's answer
       - **Strike**: Player's input number is in opponent's answer **AND** it is in the right position
       - **Out**: None of the player's input number matches with opponent's answer
-  4. 
+  4. For example, let's suppose 
 
 
 
