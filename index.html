@@ -5,9 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>text-baseball</title>
+    <style>
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+        }
+
+        #good {
+            margin-bottom: 30px;
+        }
+
+    </style>
 </head>
 
 <body>
+    <h1>How to Play</h1>
+
+    <br>This is simple 'Bulls and Cows' game modified to baseball terms. (Because I'm a big fan of baseball😂😂)</br>
+    <ol>
+        <li>Opponent(computer) will choose 4 non-repeated numbers between 1 to 9.</li>
+        <li>Player must answer the <b>right numbers with right position</b> within 10 tries.</li>
+        <li>For each try, the computer will give a hint following the rule:
+            <ul>
+                <li> <b>Ball</b>: One of player's input number is in the opponent's answer</li>
+                <li><b>Strike</b>: One of player's input number is in the opponent's answer <b>AND</b> it is in the right
+                    position</li>
+                <li><b>Out</b>: None of the player's input numbers match with opponent's answer</li>
+            </ul>
+        </li>
+        <li> For example, let's suppose the opponent's choice is 7249:
+            <ul>
+                <li>If your input is 8351, the hint is 'Out' because none of the number matches to answers.
+                <li>If your input is 9427, the hins is '<b>0 Strike 4 Ball</b>' because all four numbers match to answers
+                    but
+                    positions
+                    are all wrong.</li>
+                <li>If your input is 4173, the hint is '<b>0 Strike 2 Balls</b>' because two of the numbers match to
+                    answers but
+                    their
+                    positions are wrong.</li>
+                <li>If your input is 7942, the hint is '<b>2 Strike 2 Ball</b>' because all four numbers match to answers
+                    but only
+                    two
+                    numbers are in right position (7,4).</li>
+                <li>If your input is 7143, the hins is '<b>2 Strick 0 Ball</b>' because two numbers are right AND in right
+                    position
+                    (7,
+                    4).</li>
+                <li>If your input is 7243, the hins is '<b>3 Strick 0 Ball</b>' because three numbers are right AND in right
+                        position
+                        (7,
+                        4).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2 id='good'>**Good Luck!!**</h2>
     <form id="form">
         <input type="text" id="input" style="margin-right: 5px;">
         <button>CHECK</button>
@@ -16,6 +72,7 @@
     <div id="logs"></div>
 
     <script>
+
         const _input = document.querySelector("#input");
         const _form = document.querySelector("#form");
         const _logs = document.querySelector("#logs");
