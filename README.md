@@ -14,8 +14,9 @@ This is simple 'Bulls and Cows' game modified to baseball terms. (Because I'm a 
   4. For example, let's suppose the opponent's choice is 7249:
       - If your input is 8351, the hint is 'Out' because none of the number matches to answers.
       - If your input is 9427, the hins is '**0 Strike 4 Ball**' because all four numbers match to answers but positions are all wrong.
+      - If your input is 4173, the hint is '**0 Strike 2 Balls**' because two of the numbers match to answers but their positions are wrong.
       - If your input is 7942, the hint is '**2 Strike 2 Ball**' because all four numbers match to answers but only two numbers are in right position (7,4)
-      - If your input is 7143, the hins is '**2 Strick 0 Ball**' because two numbers are right AND in right position.
+      - If your input is 7143, the hins is '**2 Strick 0 Ball**' because two numbers are right AND in right position (7, 4).
       
 **Good Luck!!**
 
