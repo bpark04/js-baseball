@@ -17,6 +17,8 @@ This is simple 'Bulls and Cows' game modified to baseball terms. (Because I'm a 
       - If your input is 4173, the hint is '**0 Strike 2 Balls**' because two of the numbers match to answers but their positions are wrong.
       - If your input is 7942, the hint is '**2 Strike 2 Ball**' because all four numbers match to answers but only two numbers are in right position (7,4)
       - If your input is 7143, the hins is '**2 Strick 0 Ball**' because two numbers are right AND in right position (7, 4).
+   
+  To play. please click this link: https://bpark04.github.io/js-baseball/
       
 **Good Luck!!**
 
